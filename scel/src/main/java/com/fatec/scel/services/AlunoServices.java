@@ -12,8 +12,12 @@ import com.fatec.scel.repository.AlunoRepository;
 public class AlunoServices {
 	@Autowired
 	private AlunoRepository repositorio;
-	public Optional<Aluno> busca(Integer id) {
+	public Optional<Aluno> buscaPorId(Integer id) {
 		Optional<Aluno> umAluno = repositorio.findById(id);
+		return umAluno;
+	}
+	public Optional<Aluno> buscaPorRa(String ra) {
+		Optional<Aluno> umAluno = repositorio.findByRa(ra);
 		return umAluno;
 	}
 

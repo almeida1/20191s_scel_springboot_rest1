@@ -19,11 +19,16 @@ public class AlunoController {
 	@Autowired
 	private AlunoServices servico;
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<?> pesquisar(@PathVariable Integer id) {
+	@RequestMapping(value="/consultaId/{id}", method=RequestMethod.GET)
+	public ResponseEntity<?> pesquisarPorId(@PathVariable Integer id) {
 		
-		Optional<Aluno> aluno = servico.busca(id);
+		Optional<Aluno> aluno = servico.buscaPorId(id);
 		return ResponseEntity.ok().body(aluno);
 	}
-
+	@RequestMapping(value="/consultaRa/{ra}", method=RequestMethod.GET)
+	public ResponseEntity<?> pesquisarPorRa(@PathVariable String ra) {
+		
+		Optional<Aluno> aluno = servico.buscaPorRa(ra);
+		return ResponseEntity.ok().body(aluno);
+	}
 }
