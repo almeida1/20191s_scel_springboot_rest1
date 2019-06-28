@@ -18,8 +18,8 @@ public class Aluno implements Serializable {
 	public Aluno() {
 	}
 
-	public Aluno(Integer id, String ra, String nome, String email) {
-		this.id = id;
+	public Aluno(String ra, String nome, String email) {
+		
 		this.ra = ra;
 		this.nome = nome;
 		this.email = email;
