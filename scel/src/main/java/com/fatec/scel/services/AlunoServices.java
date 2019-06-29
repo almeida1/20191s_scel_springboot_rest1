@@ -20,5 +20,10 @@ public class AlunoServices {
 		Optional<Aluno> umAluno = repositorio.findByRa(ra);
 		return umAluno;
 	}
-
+	public void save(Aluno aluno) {
+		Optional<Aluno> temp = buscaPorRa(aluno.getRa());
+		if (temp != null){
+			System.out.println("aluno encontrado");
+		}
+	}
 }

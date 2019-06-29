@@ -14,8 +14,7 @@ public class Emprestimo implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
-	private int numeroEmprestimo;
+	private Integer numeroEmprestimo;
 	private String dtEmprestimo;
 	private String dtDevolucaoPrevista;
 	private String dtDevolucao;
@@ -27,26 +26,15 @@ public class Emprestimo implements Serializable {
 	}
 
 
-	public Emprestimo(Integer id, int numeroEmprestimo, String dtEmprestimo, String dtDevolucaoPrevista,
+	public Emprestimo(int numeroEmprestimo, String dtEmprestimo, String dtDevolucaoPrevista,
 			String dtDevolucao, Aluno aluno, ItemEmprestado item) {
 		
-		this.id = id;
 		this.numeroEmprestimo = numeroEmprestimo;
 		this.dtEmprestimo = dtEmprestimo;
 		this.dtDevolucaoPrevista = dtDevolucaoPrevista;
 		this.dtDevolucao = dtDevolucao;
 		this.aluno = aluno;
 		this.item = item;
-	}
-
-
-	public Integer getId() {
-		return id;
-	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 

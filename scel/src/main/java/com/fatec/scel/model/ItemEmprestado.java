@@ -16,16 +16,16 @@ public class ItemEmprestado implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private int numeroEmprestimo;
-	private Livro livro;
+	private String ra;
 	
 	public ItemEmprestado() {
 	}
 	
-	public ItemEmprestado(Integer id, int numeroEmprestimo, Livro livro) {
+	public ItemEmprestado(Integer id, int numeroEmprestimo, String ra) {
 		
 		this.id = id;
 		this.numeroEmprestimo = numeroEmprestimo;
-		this.livro = livro;
+		this.ra = ra;
 	}
 
 	public Integer getId() {
@@ -40,11 +40,11 @@ public class ItemEmprestado implements Serializable {
 	public void setNumeroEmprestimo(int numeroEmprestimo) {
 		this.numeroEmprestimo = numeroEmprestimo;
 	}
-	public Livro getLivro() {
-		return livro;
+	public String getRa() {
+		return ra;
 	}
-	public void setLivro(Livro livro) {
-		this.livro = livro;
+	public void setRa(String ra) {
+		this.ra = ra;
 	}
 
 }

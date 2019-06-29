@@ -23,8 +23,9 @@ public class ScelApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Aluno aluno1 = new Aluno("1111", "Jose da Silva", "jose@gmail.com");
-		Aluno aluno2 = new Aluno("2222", "Carlos Souza", "carlos@gmail.com");
+		Aluno aluno1 = new Aluno(null, "1111", "Jose da Silva", "jose@gmail.com");
+		Aluno aluno2 = new Aluno(null, "2222", "Carlos Souza", "carlos@gmail.com");
+		
 		alunoRepository.saveAll(Arrays.asList(aluno1,aluno2));
 		//alunoRepository.save(aluno1);
 		//alunoRepository.save(aluno2);
