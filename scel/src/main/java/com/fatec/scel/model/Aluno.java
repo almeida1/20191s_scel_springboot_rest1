@@ -9,8 +9,6 @@ import javax.persistence.Id;
 @Entity
 public class Aluno implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
 	private String ra;
 	private String nome;
 	private String email;
@@ -18,8 +16,8 @@ public class Aluno implements Serializable {
 	public Aluno() {
 	}
 
-	public Aluno(Integer id,String ra, String nome, String email) {
-		this.id = id;
+	public Aluno(String ra, String nome, String email) {
+		
 		this.ra = ra;
 		this.nome = nome;
 		this.email = email;
@@ -49,40 +47,7 @@ public class Aluno implements Serializable {
 		this.email = email;
 	}
 
-	public Integer getId() {
-		return id;
-	}
+	
 
 	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Aluno other = (Aluno) obj;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (ra == null) {
-			if (other.ra != null)
-				return false;
-		} else if (!ra.equals(other.ra))
-			return false;
-		return true;
-	}
 }

@@ -1,8 +1,11 @@
 package com.fatec.scel.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.fatec.scel.model.Aluno;
@@ -11,19 +14,43 @@ import com.fatec.scel.repository.AlunoRepository;
 @Service
 public class AlunoServices {
 	@Autowired
-	private AlunoRepository repositorio;
-	public Optional<Aluno> buscaPorId(Integer id) {
-		Optional<Aluno> umAluno = repositorio.findById(id);
-		return umAluno;
+	private AlunoRepository alunoRepo;
+	public List<Aluno> findAll() {
+		List<Aluno> alunos = alunoRepo.findAll();
+		return alunos;
 	}
-	public Optional<Aluno> buscaPorRa(String ra) {
-		Optional<Aluno> umAluno = repositorio.findByRa(ra);
-		return umAluno;
+
+	public ResponseEntity<Object> buscaPorRa(String ra) {
+		Optional<Aluno> aluno = alunoRepo.findByRa(ra);
+		if (aluno.isPresent()) 
+			 return new ResponseEntity<>(aluno, HttpStatus.OK);
+			else
+			 return new ResponseEntity<>("Aluno não encontrado", HttpStatus.NOT_FOUND);
 	}
-	public void save(Aluno aluno) {
-		Optional<Aluno> temp = buscaPorRa(aluno.getRa());
-		if (temp != null){
-			System.out.println("aluno encontrado");
+	
+	public ResponseEntity<Object> save(Aluno aluno) {
+		Optional<Aluno> umAluno = alunoRepo.findByRa(aluno.getRa());
+	
+		if (umAluno.isPresent()) {
+			return new ResponseEntity<>("Aluno já cadastrado", HttpStatus.BAD_REQUEST); //(400)
+		} else {
+			alunoRepo.save(aluno);
+			return new ResponseEntity<>("Aluno incluido com sucesso", HttpStatus.CREATED);
 		}
+	}
+	public ResponseEntity<Object> update(Aluno aluno) {
+		alunoRepo.delete(aluno);
+		alunoRepo.save(aluno);
+		return new ResponseEntity<>("Aluno atualizado com sucesso", HttpStatus.OK);
+	}
+    public ResponseEntity<Object> delete(String ra) {
+		
+		Optional<Aluno> aluno = alunoRepo.findByRa(ra);
+		if (aluno.isPresent())  {
+			alunoRepo.delete(aluno.get());
+			return new ResponseEntity<>("Aluno excluido", HttpStatus.OK);
+		}
+		else
+			return new ResponseEntity<>("Aluno não encontrado", HttpStatus.NOT_FOUND);
 	}
 }
