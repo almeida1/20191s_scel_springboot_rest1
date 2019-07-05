@@ -1,6 +1,8 @@
 package com.fatec.scel.controller;
 
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +29,7 @@ public class AlunoController {
 		return new ResponseEntity<>(servico.findAll(), HttpStatus.OK);
 	}
 	@RequestMapping(value = "/alunos", method = RequestMethod.POST)
-	public ResponseEntity<Object> cadastraAluno(@RequestBody Aluno aluno) {
+	public ResponseEntity<Object> cadastraAluno(@Valid @RequestBody Aluno aluno) {
 		return servico.save(aluno);
 	}
 	
@@ -36,7 +38,7 @@ public class AlunoController {
 		return servico.update(aluno);
 	}
 	@RequestMapping(value="/alunos/{ra}", method=RequestMethod.GET)
-	public ResponseEntity<?> pesquisarPorRa(@PathVariable String ra) {
+	public ResponseEntity<Object> pesquisarPorRa(@PathVariable String ra) {
 		return servico.buscaPorRa(ra);
 	}
 	@RequestMapping(value = "/alunos/{ra}", method = RequestMethod.DELETE)

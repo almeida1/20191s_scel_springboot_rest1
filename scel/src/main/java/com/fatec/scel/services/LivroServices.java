@@ -39,7 +39,6 @@ public class LivroServices {
 		}
 	}
 	public ResponseEntity<Object> update(Livro livro) {
-		livroRepo.delete(livro);
 		livroRepo.save(livro);
 		return new ResponseEntity<>("Livro atualizado com sucesso", HttpStatus.OK);
 	}

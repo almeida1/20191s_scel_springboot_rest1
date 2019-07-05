@@ -1,15 +1,20 @@
 package com.fatec.scel.model;
 
-import java.io.Serializable;
+//https://docs.oracle.com/javaee/7/tutorial/bean-validation001.htm
+
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 @Entity
-public class Aluno implements Serializable {
+public class Aluno  {
 	@Id
 	private String ra;
+	@NotEmpty(message = "Preencimento obrigatório")
+	@Length (min=1, max=80, message="O tamanho deve ser entre 1 e 80 caracteres.")
 	private String nome;
 	private String email;
 

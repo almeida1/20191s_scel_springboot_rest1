@@ -15,6 +15,7 @@ import com.fatec.scel.repository.AlunoRepository;
 public class AlunoServices {
 	@Autowired
 	private AlunoRepository alunoRepo;
+	
 	public List<Aluno> findAll() {
 		List<Aluno> alunos = alunoRepo.findAll();
 		return alunos;
@@ -28,6 +29,10 @@ public class AlunoServices {
 			 return new ResponseEntity<>("Aluno não encontrado", HttpStatus.NOT_FOUND);
 	}
 	
+	public Aluno buscaPorRa2(String ra) {
+		return alunoRepo.findByRa(ra).get();
+	}
+	
 	public ResponseEntity<Object> save(Aluno aluno) {
 		Optional<Aluno> umAluno = alunoRepo.findByRa(aluno.getRa());
 	
@@ -39,7 +44,6 @@ public class AlunoServices {
 		}
 	}
 	public ResponseEntity<Object> update(Aluno aluno) {
-		alunoRepo.delete(aluno);
 		alunoRepo.save(aluno);
 		return new ResponseEntity<>("Aluno atualizado com sucesso", HttpStatus.OK);
 	}
