@@ -18,8 +18,7 @@ public class Emprestimo implements Serializable {
 	private String dtEmprestimo;
 	private String dtDevolucaoPrevista;
 	private String dtDevolucao;
-	private Aluno aluno;
-	private ItemEmprestado item;
+	
 	
 	
 	public Emprestimo () {
@@ -27,31 +26,26 @@ public class Emprestimo implements Serializable {
 
 
 	public Emprestimo(int numeroEmprestimo, String dtEmprestimo, String dtDevolucaoPrevista,
-			String dtDevolucao, Aluno aluno, ItemEmprestado item) {
+			String dtDevolucao, Aluno aluno) {
 		
 		this.numeroEmprestimo = numeroEmprestimo;
 		this.dtEmprestimo = dtEmprestimo;
 		this.dtDevolucaoPrevista = dtDevolucaoPrevista;
 		this.dtDevolucao = dtDevolucao;
-		this.aluno = aluno;
-		this.item = item;
-	}
 
+	}
 
 	public int getNumeroEmprestimo() {
 		return numeroEmprestimo;
 	}
 
-
 	public void setNumeroEmprestimo(int numeroEmprestimo) {
 		this.numeroEmprestimo = numeroEmprestimo;
 	}
 
-
 	public String getDtEmprestimo() {
 		return dtEmprestimo;
 	}
-
 
 	public void setDtEmprestimo(String dtEmprestimo) {
 		this.dtEmprestimo = dtEmprestimo;
@@ -76,27 +70,5 @@ public class Emprestimo implements Serializable {
 	public void setDtDevolucao(String dtDevolucao) {
 		this.dtDevolucao = dtDevolucao;
 	}
-
-
-	public Aluno getAluno() {
-		return aluno;
-	}
-
-
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
-	}
-
-
-	public ItemEmprestado getItem() {
-		return item;
-	}
-
-
-	public void setItem(ItemEmprestado item) {
-		this.item = item;
-	}
-		
-	
 	
 }

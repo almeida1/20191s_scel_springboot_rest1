@@ -11,6 +11,7 @@ public class Livro {
 	private String isbn;
 	private String titulo;
 	private String autor;
+	// private String status emprestado, disponivel aula 22 enum
 	public Livro() {
 		
 	}
