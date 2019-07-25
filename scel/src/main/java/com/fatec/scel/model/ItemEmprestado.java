@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class ItemEmprestado {
+public class ItemEmprestado{
 	
 	
 	@Id
@@ -18,7 +18,7 @@ public class ItemEmprestado {
 	public ItemEmprestado() {
 	}
 
-	public ItemEmprestado(int numeroEmprestimo, String ra, String isbn) {
+	public ItemEmprestado(int numeroEmprestimo, String ra, String isbn){
 		
 		this.numeroEmprestimo = numeroEmprestimo;
 		this.ra = ra;

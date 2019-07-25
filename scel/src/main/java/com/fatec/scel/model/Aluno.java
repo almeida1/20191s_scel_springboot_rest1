@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
-
+import javax.validation.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 @Entity
 public class Aluno  {
@@ -16,6 +16,8 @@ public class Aluno  {
 	@NotEmpty(message = "Preencimento obrigatório")
 	@Length (min=1, max=80, message="O tamanho deve ser entre 1 e 80 caracteres.")
 	private String nome;
+	@NotEmpty(message = "Preencimento obrigatório")
+	@Email
 	private String email;
 
 	public Aluno() {
@@ -52,7 +54,4 @@ public class Aluno  {
 		this.email = email;
 	}
 
-	
-
-	
 }

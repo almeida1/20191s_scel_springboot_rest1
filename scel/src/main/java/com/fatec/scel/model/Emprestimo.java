@@ -1,16 +1,13 @@
 package com.fatec.scel.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Emprestimo implements Serializable {
+public class Emprestimo {
 	
-	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -26,7 +23,7 @@ public class Emprestimo implements Serializable {
 
 
 	public Emprestimo(int numeroEmprestimo, String dtEmprestimo, String dtDevolucaoPrevista,
-			String dtDevolucao, Aluno aluno) {
+			String dtDevolucao) {
 		
 		this.numeroEmprestimo = numeroEmprestimo;
 		this.dtEmprestimo = dtEmprestimo;
