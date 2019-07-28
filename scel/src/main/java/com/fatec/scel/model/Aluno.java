@@ -9,10 +9,13 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Email;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.br.CPF;
 @Entity
 public class Aluno  {
 	@Id
 	private String ra;
+	//@CPF
+	//private String cpf;
 	@NotEmpty(message = "Preencimento obrigatório")
 	@Length (min=1, max=80, message="O tamanho deve ser entre 1 e 80 caracteres.")
 	private String nome;

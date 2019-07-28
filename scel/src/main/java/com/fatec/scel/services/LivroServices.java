@@ -10,7 +10,11 @@ import org.springframework.stereotype.Service;
 
 import com.fatec.scel.model.Livro;
 import com.fatec.scel.repository.LivroRepository;
-
+/**
+ * Valida as regras de negócio da classe Livro
+ * @author edson
+ *
+ */
 @Service
 public class LivroServices {
 	@Autowired

@@ -23,8 +23,8 @@ public class EmprestimoController {
 	//insert into aluno values ('2222', 'xaviera@hotmail.com', 'Silva Xavier');
 	//insert into aluno values ('3333', 'maria@hotmail.com', 'Maria Fonseca');
 	//insert into livro values ('aaaa', 'Presman', ' Engenharia de Software');
-	//insert into emprestimo values (1,'','20/07/2019','18/07/2019'); 
-	//nr dtdevolucao dtprev dtemp
+	//insert into emprestimo values (1,'','20/07/2019','18/07/2019','1111','aaaa'); 
+	//nr dtdevolucao dtprev dtemp ra isbn
 	
 	@Autowired
 	private EmprestimoServices servico;
@@ -34,7 +34,7 @@ public class EmprestimoController {
 		return new ResponseEntity<>(servico.findAll(), HttpStatus.OK);
 	}
 	@RequestMapping(value = "/emprestimos", method = RequestMethod.POST)
-	public ResponseEntity<Object> registraEmprestimo(@RequestBody Emprestimo emprestimo, String ra, String isbn ) {
-		return servico.save(emprestimo,ra,isbn);
+	public ResponseEntity<Object> registraEmprestimo(@RequestBody Emprestimo emprestimo ) {
+		return servico.save(emprestimo);
 	}
 }

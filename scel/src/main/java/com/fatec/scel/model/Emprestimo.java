@@ -15,31 +15,25 @@ public class Emprestimo {
 	private String dtEmprestimo;
 	private String dtDevolucaoPrevista;
 	private String dtDevolucao;
-	
-	
-	
+	private String ra;
+	private String isbn;
+		
 	public Emprestimo () {
 	}
 
-
-	public Emprestimo(int numeroEmprestimo, String dtEmprestimo, String dtDevolucaoPrevista,
-			String dtDevolucao) {
-		
+	public Emprestimo(Integer numeroEmprestimo, String dtEmprestimo, String dtDevolucaoPrevista, String ra,String isbn) {
 		this.numeroEmprestimo = numeroEmprestimo;
 		this.dtEmprestimo = dtEmprestimo;
 		this.dtDevolucaoPrevista = dtDevolucaoPrevista;
-		this.dtDevolucao = dtDevolucao;
-
+		this.setRa(ra);
+		this.setIsbn(isbn);
 	}
 
-	public int getNumeroEmprestimo() {
+	public Integer getNumeroEmprestimo() {
 		return numeroEmprestimo;
 	}
 
-	public void setNumeroEmprestimo(int numeroEmprestimo) {
-		this.numeroEmprestimo = numeroEmprestimo;
-	}
-
+	
 	public String getDtEmprestimo() {
 		return dtEmprestimo;
 	}
@@ -48,16 +42,13 @@ public class Emprestimo {
 		this.dtEmprestimo = dtEmprestimo;
 	}
 
-
 	public String getDtDevolucaoPrevista() {
 		return dtDevolucaoPrevista;
 	}
 
-
 	public void setDtDevolucaoPrevista(String dtDevolucaoPrevista) {
 		this.dtDevolucaoPrevista = dtDevolucaoPrevista;
 	}
-
 
 	public String getDtDevolucao() {
 		return dtDevolucao;
@@ -66,6 +57,26 @@ public class Emprestimo {
 
 	public void setDtDevolucao(String dtDevolucao) {
 		this.dtDevolucao = dtDevolucao;
+	}
+
+
+	public String getRa() {
+		return ra;
+	}
+
+
+	public void setRa(String ra) {
+		this.ra = ra;
+	}
+
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 	
 }

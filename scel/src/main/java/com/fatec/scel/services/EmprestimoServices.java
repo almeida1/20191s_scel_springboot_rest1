@@ -19,6 +19,11 @@ import com.fatec.scel.repository.ItemRepository;
 import com.fatec.scel.repository.LivroRepository;
 
 // http satus code
+/**
+ * Valida as regras de negócio da classe Emprestimo
+ * @author edson
+ *
+ */
 @Service
 public class EmprestimoServices {
 	private ItemEmprestado itemEmprestado;
@@ -35,22 +40,17 @@ public class EmprestimoServices {
 		List<Emprestimo> emprestimos = emprestimoRepo.findAll();
 		return emprestimos;
 	}
+	// uma insercao de mais de um objeto pode-se criar um dto e salvar as partes do dto composto para cada objeto
+	// simples por exemplo dto cliente e endereco e salva cliente depois endereco
 	@Transactional
-	public ResponseEntity<Object> save(Emprestimo emprestimo, String ra, String isbn) {
-		Optional<Aluno> aluno = alunoRepo.findByRa(ra);
-		Optional<Livro> livro = livroRepo.findByISBN(isbn);
+	public ResponseEntity<Object> save(Emprestimo emprestimo) {
+		Optional<Aluno> aluno = alunoRepo.findByRa(emprestimo.getRa());
+		Optional<Livro> livro = livroRepo.findByISBN(emprestimo.getIsbn());
 		if (livro.isPresent() && aluno.isPresent()) {
-			emprestimo.setDtEmprestimo("17/07/2019");
 			emprestimoRepo.save(emprestimo);
-			itemEmprestado = new ItemEmprestado();
-			itemEmprestado.setNumeroEmprestimo(emprestimo.getNumeroEmprestimo());
-			itemEmprestado.setRa(ra);
-			itemEmprestado.setIsbn(isbn);
-			itemRepo.save(itemEmprestado);
 			return new ResponseEntity<>("Emprestimo incluido com sucesso", HttpStatus.CREATED);
-			
 		}else {
-			 return new ResponseEntity<>("Emprestimo recusado", HttpStatus.NOT_FOUND);
+			 return new ResponseEntity<>("Emprestimo recusado - dados invalidos", HttpStatus.NOT_FOUND);
 		}
 	}
 }

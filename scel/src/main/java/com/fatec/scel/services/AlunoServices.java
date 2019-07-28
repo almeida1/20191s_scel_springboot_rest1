@@ -12,7 +12,11 @@ import org.springframework.stereotype.Service;
 
 import com.fatec.scel.model.Aluno;
 import com.fatec.scel.repository.AlunoRepository;
-
+/**
+ * Valida as regras de negócio da classe Aluno
+ * @author edson
+ *
+ */
 @Service
 public class AlunoServices {
 	@Autowired
@@ -38,7 +42,7 @@ public class AlunoServices {
 	public ResponseEntity<Object> save(@Valid Aluno aluno) {
 		try {
 			Optional<Aluno> umAluno = alunoRepo.findByRa(aluno.getRa());
-
+			//Optional<Aluno> umAluno = alunoRepo.findByRa(aluno.getEmail());
 			if (umAluno.isPresent()) {
 				return new ResponseEntity<>("Aluno já cadastrado", HttpStatus.BAD_REQUEST); // (400)
 			} else {
