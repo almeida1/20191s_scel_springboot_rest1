@@ -35,12 +35,12 @@ public class LivroController {
 	public ResponseEntity<Object> atualizaLivro(@RequestBody Livro livro) {
 		return servico.update(livro);
 	}
-	@RequestMapping(value="/livros/{ra}", method=RequestMethod.GET)
-	public ResponseEntity<?> pesquisarPorRa(@PathVariable String ra) {
-		return servico.buscaPorRa(ra);
+	@RequestMapping(value="/livros/{isbn}", method=RequestMethod.GET)
+	public ResponseEntity<?> pesquisarPorRa(@PathVariable String isbn) {
+		return servico.buscaPorRa(isbn);
 	}
-	@RequestMapping(value = "/livros/{ra}", method = RequestMethod.DELETE)
-	public ResponseEntity<Object> excluirLivro(@PathVariable("ra") String ra) {
-		return servico.delete(ra);
+	@RequestMapping(value = "/livros/{isbn}", method = RequestMethod.DELETE)
+	public ResponseEntity<Object> excluirLivro(@PathVariable("isbn") String isbn) {
+		return servico.delete(isbn);
 	}
 }
